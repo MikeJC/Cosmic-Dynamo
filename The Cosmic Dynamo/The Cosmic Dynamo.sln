@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{FF394C24-1068-3A79-BE11-E19003733264}") = "The Cosmic Dynamo", "Assembly-CSharp.csproj", "{7C09C54F-80C3-30F5-4829-899102FDDA23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C09C54F-80C3-30F5-4829-899102FDDA23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C09C54F-80C3-30F5-4829-899102FDDA23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C09C54F-80C3-30F5-4829-899102FDDA23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C09C54F-80C3-30F5-4829-899102FDDA23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
