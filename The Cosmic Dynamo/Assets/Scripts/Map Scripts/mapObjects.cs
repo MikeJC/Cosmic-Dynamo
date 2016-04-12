@@ -5,7 +5,7 @@ using System.Collections;
  * Each quadrant will have a seperate mesh. This way each mesh not
  * being viewed by the camera will not be rendered allowing for a 
  * larger map without performance lost. */
-public class mapGround : MonoBehaviour {
+public class mapObjects : MonoBehaviour {
 	// Global Variables
 	// = = = = = = = = = = = = = = = = = = = = >
 	private int numQuadX;		// identify which quadrant this is
@@ -38,21 +38,21 @@ public class mapGround : MonoBehaviour {
 			tileHeight = QuadHeight / numTilesHigh;
 			tileOffsetX = numQuadX * numTilesWide;
 			tileOffsetY = numQuadY * numTilesHigh;
-			this.gameObject.name = "mapQuadGnd(" + numQuadX + "," + numQuadY + ")";
+			this.gameObject.name = "mapQuadObj(" + numQuadX + "," + numQuadY + ")";
 			textureWidth = this.GetComponent<MeshRenderer> ().material.mainTexture.width; 
 			textureHeight = this.GetComponent<MeshRenderer> ().material.mainTexture.height;
-			txtrTileWidth = 96;
-			txtrTileHeight = 96;
+			txtrTileWidth = 64;
+			txtrTileHeight = 64;
 			BuildMesh ();
 		} else {
 			Debug.Log ("(Error)mapGround: Lost the master."); 
 		}
 	}
-	
+
 	// Update
 	// = = = = = = = = = = = = = = = = = = = = >
 	void Update () {
-	
+
 	}
 
 	// Functions
@@ -73,7 +73,7 @@ public class mapGround : MonoBehaviour {
 
 		//create mesh property data
 		int x = -1; int y = 0;
-		float vertError = 0.0f /*1/96f*/;			// how much to expand a tile to create overlap
+		float vertError = 0.0f /*1/96f*/;		// how much to expand a tile to create overlap
 		float uvError = 0.5f / txtrTileWidth;	// how much a single tiles uv will be off
 		float uvTilePercWidth = txtrTileWidth / textureWidth;
 		float uvTilePercHeight = txtrTileHeight / textureHeight; 
@@ -90,8 +90,8 @@ public class mapGround : MonoBehaviour {
 				if (mapMaster.Master.Map.Tiles [x + tileOffsetX, y + tileOffsetY] == null) {
 					Debug.Log ("Tile (" + (x + tileOffsetX) + ", " + (y + tileOffsetY) + ") does not exist");
 				}
-				tx = mapMaster.Master.Map.Tiles[x + tileOffsetX, y + tileOffsetY].GroundUVx;
-				ty = mapMaster.Master.Map.Tiles[x + tileOffsetX, y + tileOffsetY].GroundUVy;
+				tx = mapMaster.Master.Map.Tiles[x + tileOffsetX, y + tileOffsetY].ObjectUVx;
+				ty = mapMaster.Master.Map.Tiles[x + tileOffsetX, y + tileOffsetY].ObjectUVy;
 
 				// now back to assigning mesh stuff
 				verts [i] = new Vector3 (x * tileWidth - vertError, y * tileHeight - vertError, 0f);
@@ -131,5 +131,43 @@ public class mapGround : MonoBehaviour {
 
 		mf.mesh = mesh;
 		mc.sharedMesh = mf.mesh;
+	}
+
+	public bool IsTileInQuadrant (int _x, int _y){
+		int x = _x - tileOffsetX;
+		int y = _y - tileOffsetY;
+		if (x < 0 || y < 0 || x >= numTilesWide || y >= numTilesHigh) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public void UpdateTileTexture (int _x, int _y) {
+		int tx = mapMaster.Master.Map.Tiles[_x, _y].ObjectUVx;
+		int ty = mapMaster.Master.Map.Tiles[_x, _y].ObjectUVy;
+		if (IsTileInQuadrant (_x, _y)) {
+			int x = _x - tileOffsetX;
+			int y = _y - tileOffsetY;
+			Mesh mesh = GetComponent<MeshFilter> ().mesh;
+
+			int numTiles = numTilesHigh * numTilesWide;
+			float uvError = 0.5f / txtrTileWidth;	// how much a single tiles uv will be off
+			float uvTilePercWidth = txtrTileWidth / textureWidth;
+			float uvTilePercHeight = txtrTileHeight / textureHeight; 
+			Vector2[] uvs = new Vector2[numTiles * 4];
+			uvs = mesh.uv;
+
+			uvs [(y * numTilesWide + x) * 4 + 0] = new Vector2 (uvTilePercWidth * (tx + 0) + uvError, uvTilePercHeight * (ty + 0) + uvError);
+			uvs [(y * numTilesWide + x) * 4 + 1] = new Vector2 (uvTilePercWidth * (tx + 1) - uvError, uvTilePercHeight * (ty + 0) + uvError);
+			uvs [(y * numTilesWide + x) * 4 + 2] = new Vector2 (uvTilePercWidth * (tx + 1) - uvError, uvTilePercHeight * (ty + 1) - uvError);
+			uvs [(y * numTilesWide + x) * 4 + 3] = new Vector2 (uvTilePercWidth * (tx + 0) + uvError, uvTilePercHeight * (ty + 1) - uvError);
+
+			mesh.uv = uvs;
+			GetComponent<MeshFilter> ().mesh = mesh;
+		} else {
+			Debug.Log ("(Error)mapObjects: Tile found outside the quadrant."); 
+		}
+
 	}
 }

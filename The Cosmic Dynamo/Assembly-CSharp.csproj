@@ -45,7 +45,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Map Scripts\mapData.cs" />
      <Compile Include="Assets\Scripts\Map Scripts\mapGround.cs" />
+     <Compile Include="Assets\Scripts\Map Scripts\mapObjects.cs" />
+     <Compile Include="Assets\Scripts\Map Scripts\tileData.cs" />
      <Compile Include="Assets\Scripts\Master Scripts\mapMaster.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
