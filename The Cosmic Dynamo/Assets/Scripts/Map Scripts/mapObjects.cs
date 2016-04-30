@@ -74,7 +74,7 @@ public class mapObjects : MonoBehaviour {
 		//create mesh property data
 		int x = -1; int y = 0;
 		float vertError = 0.0f /*1/96f*/;		// how much to expand a tile to create overlap
-		float uvError = 0.5f / txtrTileWidth;	// how much a single tiles uv will be off
+		float uvError = 0.0f / txtrTileWidth;	// how much a single tiles uv will be off
 		float uvTilePercWidth = txtrTileWidth / textureWidth;
 		float uvTilePercHeight = txtrTileHeight / textureHeight; 
 

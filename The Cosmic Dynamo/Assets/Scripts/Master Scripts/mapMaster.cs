@@ -122,28 +122,28 @@ public class mapMaster : MonoBehaviour {
 
 			for (int a = 0; a < 2; a++) {
 				for (int b = 0; b < 5; b++) {
-					Map.Tiles[anchorX + a,anchorY + 2 + b].GroundType = "Red Carpet";
+					Map.Tiles[anchorX + a,anchorY + 2 + b].GroundType = "Metal Panel";
 					Map.Tiles[anchorX + a,anchorY + 2 + b].GetObjectUVs () ;
 				}
 			}
 
 			for (int a = 0; a < 5; a++) {
 				for (int b = 0; b < 9; b++) {
-					Map.Tiles[anchorX + 2 + a, anchorY + b].GroundType = "Red Carpet";
+					Map.Tiles[anchorX + 2 + a, anchorY + b].GroundType = "Metal Panel";
 					Map.Tiles[anchorX + 2 + a, anchorY + b].GetObjectUVs () ;
 				}
 			}
 
 			for (int a = 0; a < 3; a++) {
 				for (int b = 0; b < 7; b++) {
-					Map.Tiles[anchorX + 7 + a, anchorY + 1 + b].GroundType = "Red Carpet";
+					Map.Tiles[anchorX + 7 + a, anchorY + 1 + b].GroundType = "Metal Panel";
 					Map.Tiles[anchorX + 7 + a, anchorY + 1 + b].GetObjectUVs () ;
 				}
 			}
 
 			for (int a = 0; a < 3; a++) {
 				for (int b = 0; b < 5; b++) {
-					Map.Tiles[anchorX + 10 + a, anchorY + 2 + b].GroundType = "Red Carpet";
+					Map.Tiles[anchorX + 10 + a, anchorY + 2 + b].GroundType = "Metal Panel";
 					Map.Tiles[anchorX + 10 + a, anchorY + 2 + b].GetObjectUVs () ;
 				}
 			}
@@ -214,15 +214,20 @@ public class mapMaster : MonoBehaviour {
 				if (!N &&  E &&  S &&  W ) {ox = 1; oy = 2;}
 				if (!N && !E &&  S &&  W ) {ox = 2; oy = 2;}
 
-				if ( N && !E && !S && !W ) {ox = 3; oy = 0;}
+				//if ( N && !E && !S && !W ) {ox = 3; oy = 0;}
+				if ( N && !E && !S && !W ) {ox = 4; oy = 0;}
 				if ( N && !E &&  S && !W ) {ox = 3; oy = 1;}
-				if (!N && !E &&  S && !W ) {ox = 3; oy = 2;}
+				if (!N && !E &&  S && !W ) {ox = 4; oy = 1;}
+				//if (!N && !E &&  S && !W ) {ox = 3; oy = 2;}
 
 				if (!N &&  E && !S && !W ) {ox = 4; oy = 2;}
 				if (!N &&  E && !S &&  W ) {ox = 5; oy = 2;}
 				if (!N && !E && !S &&  W ) {ox = 6; oy = 2;}
 
 				if (!N && !E && !S && !W ) {ox = 5; oy = 0;}
+
+				oy = oy + 13;	// lets offset to the correct wall type
+
 
 				return new Vector2 (ox, oy);
 			} else {

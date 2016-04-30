@@ -16,5 +16,6 @@ C:\Users\Mike JC\Desktop\Unity\The Cosmic Dynamo\Temp\bin\Debug\UnityEngine.xml
 C:\Users\Mike JC\Desktop\Unity\The Cosmic Dynamo\Temp\bin\Debug\UnityEditor.xml
 C:\Users\Mike JC\Desktop\Unity\The Cosmic Dynamo\Temp\bin\Debug\UnityEngine.UI.xml
 C:\Users\Mike JC\Desktop\Unity\The Cosmic Dynamo\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\Mike JC\Desktop\Unity\The Cosmic Dynamo\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\Mike JC\Desktop\Unity\The Cosmic Dynamo\obj\Debug\Assembly-CSharp.dll
 C:\Users\Mike JC\Desktop\Unity\The Cosmic Dynamo\obj\Debug\Assembly-CSharp.pdb

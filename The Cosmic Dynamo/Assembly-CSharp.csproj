@@ -45,11 +45,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Map Scripts\ObjEnvData.cs" />
      <Compile Include="Assets\Scripts\Map Scripts\mapData.cs" />
      <Compile Include="Assets\Scripts\Map Scripts\mapGround.cs" />
      <Compile Include="Assets\Scripts\Map Scripts\mapObjects.cs" />
+     <Compile Include="Assets\Scripts\Map Scripts\objectData.cs" />
      <Compile Include="Assets\Scripts\Map Scripts\tileData.cs" />
+     <Compile Include="Assets\Scripts\Master Scripts\buildMaster.cs" />
      <Compile Include="Assets\Scripts\Master Scripts\mapMaster.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\uiControl.cs" />
+     <None Include="Assets\Objects\Misc\Fonts\quantum\quantum.txt" />
+     <None Include="Assets\Objects\Misc\Fonts\arkitech\license.txt" />
+     <None Include="Assets\Objects\Misc\Fonts\space_ranger\spaceranger.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
